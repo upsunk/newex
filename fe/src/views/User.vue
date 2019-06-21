@@ -177,7 +177,7 @@ export default {
   },
   methods: {
     getReq () {
-      axios.get('http://localhost:3000/api/user', {
+      axios.get(`${this.$apiRootPath}user`, {
         user: 'getMan'
       })
         .then((r) => {
@@ -188,7 +188,7 @@ export default {
         })
     },
     postReq () {
-      axios.post('http://localhost:3000/api/user', {
+      axios.post(`${this.$apiRootPath}user`, {
         name: '가정', age: 333
       })
         .then((r) => {
@@ -199,7 +199,7 @@ export default {
         })
     },
     putReq () {
-      axios.put('http://localhost:3000/api/user', {
+      axios.put(`${this.$apiRootPath}user`, {
         user: 'putMan'
       })
         .then((r) => {
@@ -210,7 +210,7 @@ export default {
         })
     },
     delReq () {
-      axios.delete('http://localhost:3000/api/user')
+      axios.delete(`${this.$apiRootPath}user`)
         .then((r) => {
           this.delMd = JSON.stringify(r.data)
         })
@@ -227,7 +227,7 @@ export default {
       console.log(this.userName, this.userAge)
       this.dialog = false
       this.pop(this.userName)
-      axios.post('http://localhost:3000/api/user', {
+      axios.post(`${this.$apiRootPath}user`, {
         name: this.userName,
         age: this.userAge
       })
@@ -240,7 +240,7 @@ export default {
         })
     },
     getUsers () {
-      axios.get('http://localhost:3000/api/user')
+      axios.get(`${this.$apiRootPath}user`)
         .then((r) => {
           this.users = r.data.users
         })
@@ -256,7 +256,7 @@ export default {
     },
     putUser (id) {
       this.dialog = false
-      axios.put(`http://localhost:3000/api/user/${this.putId}`, {
+      axios.put(`${this.$apiRootPath}user/${this.putId}`, {
         name: this.userName,
         age: this.userAge
       })
@@ -269,7 +269,7 @@ export default {
         })
     },
     delUser (id) {
-      axios.delete(`http://localhost:3000/api/user/${id}`)
+      axios.delete(`${this.$apiRootPath}user/${id}`)
         .then((r) => {
           this.pop('사용자 삭제 완료')
           this.getUsers()
